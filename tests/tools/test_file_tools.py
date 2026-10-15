@@ -114,11 +114,26 @@ class TestPatchHandler:
 
 
 
+    # @patch("tools.file_tools._get_file_ops")
+    # def test_unknown_mode_errors(self, mock_get):
+    #     from tools.file_tools import patch_tool
+    #     result = json.loads(patch_tool(mode="invalid_mode"))
+    #     assert "error" in result
+
     @patch("tools.file_tools._get_file_ops")
     def test_unknown_mode_errors(self, mock_get):
         from tools.file_tools import patch_tool
+
+        # 调用：传入不支持的模式
         result = json.loads(patch_tool(mode="invalid_mode"))
+
+        # 检查：既说明错误输入，也提供可用选项
         assert "error" in result
+        error = result["error"]
+
+        assert "invalid_mode" in error
+        assert "replace" in error
+        assert "patch" in error
 
     @patch("tools.file_tools._get_file_ops")
     def test_patch_v4a_rejects_traversal_in_update_header(self, mock_get):

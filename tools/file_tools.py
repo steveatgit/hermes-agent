@@ -1007,7 +1007,7 @@ def patch_tool(mode: str = "replace", path: str | None = None, old_string: str |
                 result = file_ops.patch_v4a(
                     _rewrite_v4a_patch_paths_for_host(patch, _path_to_resolved, _path_to_entry, file_ops))
             else:
-                return tool_error(f"Unknown mode: {mode}")
+                return tool_error(f"Unknown mode: {mode}. Supported modes: replace, patch.")
 
             result_dict = result.to_dict()
             if stale_warnings:

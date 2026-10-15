@@ -1,0 +1,17 @@
+name: local-ticket-demo
+version: 0.1.0
+description: 本地模拟工单查询，学习业务 API 接入
+provides_tools:
+  - local_ticket_get
+config_schema:
+  base_url:
+    type: str
+    default: http://127.0.0.1:8765
+    description: 本地模拟服务地址
+  timeout:
+    type: float
+    default: 3.0
+  api_key:
+    type: secret
+    env: LOCAL_TICKET_API_KEY
+    description: 本地模拟服务令牌
